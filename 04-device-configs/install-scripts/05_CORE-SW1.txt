@@ -1,0 +1,170 @@
+! ==================================================================
+! Device : CORE-SW1
+! Model  : Cisco 3560-24PS
+! Role   : Layer 3 core switch and default gateway for all VLANs
+! Task   : Task 2b - Network Installation (AC 3.2)
+! Source : Design document Tables 3 (VLANs), 4 (IP), 5 (ports), 6 (routes)
+! Order  : 5 of 8
+! Use    : Open the device > CLI tab > press Enter > paste this whole file.
+!          Lines starting with "!" are comments and are ignored by IOS.
+! ==================================================================
+!
+! ---- Basic device setup (Section 18) ----
+enable
+configure terminal
+hostname CORE-SW1
+no ip domain-lookup
+enable secret Netr0n@2026
+service password-encryption
+banner motd # Authorised access only. Unauthorised access is prohibited. #
+line console 0
+ password Con@2026
+ login
+ exec-timeout 10 0
+ logging synchronous
+ exit
+!
+! ---- VLANs (Table 3) ----
+vtp mode transparent
+vlan 10
+ name ADMIN
+ exit
+vlan 20
+ name FACULTY
+ exit
+vlan 30
+ name LAB
+ exit
+vlan 40
+ name SERVERS
+ exit
+vlan 50
+ name PRINTERS
+ exit
+vlan 99
+ name MANAGEMENT
+ exit
+vlan 998
+ name BLACKHOLE
+ exit
+vlan 999
+ name NATIVE
+ exit
+!
+! ---- Enable routing between VLANs ----
+ip routing
+!
+! ---- Trunks to the four access switches ----
+interface range fastEthernet0/1 - 4
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 999
+ switchport nonegotiate
+ no shutdown
+ exit
+interface fastEthernet0/1
+ description TRUNK TO ACC-SW1
+ switchport trunk allowed vlan 10,99,999
+ exit
+interface fastEthernet0/2
+ description TRUNK TO ACC-SW2
+ switchport trunk allowed vlan 20,99,999
+ exit
+interface fastEthernet0/3
+ description TRUNK TO ACC-SW3
+ switchport trunk allowed vlan 30,99,999
+ exit
+interface fastEthernet0/4
+ description TRUNK TO SRV-SW1
+ switchport trunk allowed vlan 40,99,999
+ exit
+!
+! ---- Printer port ----
+interface fastEthernet0/10
+ description PRN1
+ switchport mode access
+ switchport access vlan 50
+ no shutdown
+ exit
+!
+! ---- Unused ports: VLAN 998 and shut down ----
+interface range fastEthernet0/5 - 9
+ description UNUSED
+ switchport mode access
+ switchport access vlan 998
+ shutdown
+ exit
+interface range fastEthernet0/11 - 24
+ description UNUSED
+ switchport mode access
+ switchport access vlan 998
+ shutdown
+ exit
+interface gigabitEthernet0/2
+ description UNUSED
+ switchport mode access
+ switchport access vlan 998
+ shutdown
+ exit
+!
+! ---- Routed port to the firewall ----
+interface gigabitEthernet0/1
+ description LINK TO FW1 Gi1/2
+ no switchport
+ ip address 10.0.0.6 255.255.255.252
+ no shutdown
+ exit
+!
+! ---- VLAN gateways (SVIs, Table 4) ----
+interface vlan 10
+ description ADMIN GATEWAY
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+ exit
+interface vlan 20
+ description FACULTY GATEWAY
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+ exit
+interface vlan 30
+ description LAB GATEWAY
+ ip address 192.168.30.1 255.255.255.0
+ no shutdown
+ exit
+interface vlan 40
+ description SERVERS GATEWAY
+ ip address 192.168.40.1 255.255.255.0
+ no shutdown
+ exit
+interface vlan 50
+ description PRINTERS GATEWAY
+ ip address 192.168.50.1 255.255.255.0
+ no shutdown
+ exit
+interface vlan 99
+ description MANAGEMENT GATEWAY
+ ip address 192.168.99.1 255.255.255.0
+ no shutdown
+ exit
+!
+! ---- Default route to the firewall (Table 6) ----
+ip route 0.0.0.0 0.0.0.0 10.0.0.5
+!
+! ---- Spanning tree root for every VLAN ----
+spanning-tree vlan 10 root primary
+spanning-tree vlan 20 root primary
+spanning-tree vlan 30 root primary
+spanning-tree vlan 40 root primary
+spanning-tree vlan 50 root primary
+spanning-tree vlan 99 root primary
+!
+! ---- Save ----
+end
+write memory
+!
+! ---- Verification ----
+! show interfaces trunk
+! show ip interface brief
+! show ip route
+! show spanning-tree vlan 10
+! show vlan brief

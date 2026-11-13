@@ -1,0 +1,89 @@
+! ==================================================================
+! Device : ACC-SW3
+! Model  : Cisco 2960-24TT
+! Role   : Access switch for the Computer Lab
+! Task   : Task 2b - Network Installation (AC 3.2)
+! Source : Design document Tables 3 (VLANs), 4 (IP), 5 (ports), 6 (routes)
+! Order  : 3 of 8
+! Use    : Open the device > CLI tab > press Enter > paste this whole file.
+!          Lines starting with "!" are comments and are ignored by IOS.
+! ==================================================================
+!
+! ---- Basic device setup (Section 18) ----
+enable
+configure terminal
+hostname ACC-SW3
+no ip domain-lookup
+enable secret Netr0n@2026
+service password-encryption
+banner motd # Authorised access only. Unauthorised access is prohibited. #
+line console 0
+ password Con@2026
+ login
+ exec-timeout 10 0
+ logging synchronous
+ exit
+!
+! ---- VLANs (Table 3) ----
+vtp mode transparent
+vlan 30
+ name LAB
+ exit
+vlan 99
+ name MANAGEMENT
+ exit
+vlan 998
+ name BLACKHOLE
+ exit
+vlan 999
+ name NATIVE
+ exit
+!
+! ---- Access ports for connected devices (Table 5) ----
+interface range fastEthernet0/1 - 4
+ description LAB PCs
+ switchport mode access
+ switchport access vlan 30
+ no shutdown
+ exit
+!
+! ---- Unused ports: VLAN 998 and shut down ----
+interface range fastEthernet0/5 - 24
+ description UNUSED
+ switchport mode access
+ switchport access vlan 998
+ shutdown
+ exit
+interface gigabitEthernet0/2
+ description UNUSED
+ switchport mode access
+ switchport access vlan 998
+ shutdown
+ exit
+!
+! ---- Uplink trunk to the core ----
+interface gigabitEthernet0/1
+ description UPLINK TO CORE-SW1 Fa0/3
+ switchport mode trunk
+ switchport trunk native vlan 999
+ switchport trunk allowed vlan 30,99,999
+ switchport nonegotiate
+ no shutdown
+ exit
+!
+! ---- Management address (VLAN 99) ----
+interface vlan 99
+ description MANAGEMENT
+ ip address 192.168.99.13 255.255.255.0
+ no shutdown
+ exit
+ip default-gateway 192.168.99.1
+!
+! ---- Save ----
+end
+write memory
+!
+! ---- Verification ----
+! show vlan brief
+! show interfaces trunk
+! ping 192.168.99.1

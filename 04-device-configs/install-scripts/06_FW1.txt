@@ -1,0 +1,59 @@
+! ==================================================================
+! Device : FW1
+! Model  : Cisco ASA 5506-X
+! Role   : Firewall between the campus core and the edge router
+! Task   : Task 2b - Network Installation (AC 3.2)
+! Source : Design document Tables 4 (IP) and 6 (routes)
+! Order  : 6 of 8
+! Use    : Open FW1 > CLI tab > press Enter > type "enable" and press
+!          Enter at the empty Password prompt > then paste from
+!          "configure terminal" below.
+! ==================================================================
+!
+configure terminal
+!
+! ---- Basic device setup (Section 18) ----
+hostname FW1
+enable password Netr0n@2026
+!
+! ---- Outside interface (towards R1-EDGE) ----
+interface GigabitEthernet1/1
+ nameif outside
+ security-level 0
+ ip address 10.0.0.2 255.255.255.252
+ no shutdown
+ exit
+!
+! ---- Inside interface (towards CORE-SW1) ----
+interface GigabitEthernet1/2
+ nameif inside
+ security-level 100
+ ip address 10.0.0.5 255.255.255.252
+ no shutdown
+ exit
+!
+! ---- Static routes (Table 6) ----
+route outside 0.0.0.0 0.0.0.0 10.0.0.1
+route inside 192.168.0.0 255.255.0.0 10.0.0.6
+!
+! ---- ICMP inspection so that ping replies can return ----
+! Note: in Packet Tracer one "exit" from the class sub-mode
+! returns straight to (config), so only one exit is used here.
+class-map inspection_default
+ match default-inspection-traffic
+ exit
+policy-map global_policy
+ class inspection_default
+  inspect icmp
+  exit
+service-policy global_policy global
+!
+! ---- Save ----
+end
+write memory
+!
+! ---- Verification ----
+! show interface ip brief
+! show route
+! ping 10.0.0.6
+! ping 10.0.0.1

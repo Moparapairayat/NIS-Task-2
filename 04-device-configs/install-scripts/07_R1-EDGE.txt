@@ -1,0 +1,62 @@
+! ==================================================================
+! Device : R1-EDGE
+! Model  : Cisco 2911
+! Role   : Edge router between the firewall and the ISP, performs NAT
+! Task   : Task 2b - Network Installation (AC 3.2)
+! Source : Design document Tables 3 (VLANs), 4 (IP), 5 (ports), 6 (routes)
+! Order  : 7 of 8
+! Use    : Open the device > CLI tab > answer "no" if asked about the
+!          initial dialog > press Enter > paste this whole file.
+!          Lines starting with "!" are comments and are ignored by IOS.
+! ==================================================================
+!
+! ---- Basic device setup (Section 18) ----
+enable
+configure terminal
+hostname R1-EDGE
+no ip domain-lookup
+enable secret Netr0n@2026
+service password-encryption
+banner motd # Authorised access only. Unauthorised access is prohibited. #
+line console 0
+ password Con@2026
+ login
+ exec-timeout 10 0
+ logging synchronous
+ exit
+!
+! ---- WAN interface to the ISP ----
+interface gigabitEthernet0/0
+ description WAN TO ISP-R
+ ip address 203.0.113.2 255.255.255.252
+ ip nat outside
+ no shutdown
+ exit
+!
+! ---- Inside interface to the firewall ----
+interface gigabitEthernet0/1
+ description LINK TO FW1 OUTSIDE
+ ip address 10.0.0.1 255.255.255.252
+ ip nat inside
+ no shutdown
+ exit
+!
+! ---- Static routes (Table 6) ----
+ip route 0.0.0.0 0.0.0.0 203.0.113.1
+ip route 192.168.0.0 255.255.0.0 10.0.0.2
+!
+! ---- PAT (NAT overload) for all campus addresses ----
+access-list 1 remark CAMPUS ADDRESSES FOR NAT
+access-list 1 permit 192.168.0.0 0.0.255.255
+ip nat inside source list 1 interface gigabitEthernet0/0 overload
+!
+! ---- Save ----
+end
+write memory
+!
+! ---- Verification ----
+! show ip interface brief
+! show ip route
+! ping 10.0.0.2
+! ping 203.0.113.1
+! show ip nat translations   (after a ping from a server to 198.51.100.10)

@@ -1,0 +1,49 @@
+! ==================================================================
+! Device : ISP-R
+! Model  : Cisco 2911
+! Role   : Simulated ISP router and gateway for INTERNET-SRV
+! Task   : Task 2b - Network Installation (AC 3.2)
+! Source : Design document Tables 3 (VLANs), 4 (IP), 5 (ports), 6 (routes)
+! Order  : 8 of 8
+! Use    : Open the device > CLI tab > answer "no" if asked about the
+!          initial dialog > press Enter > paste this whole file.
+!          Lines starting with "!" are comments and are ignored by IOS.
+! ==================================================================
+!
+! ---- Basic device setup (Section 18) ----
+enable
+configure terminal
+hostname ISP-R
+no ip domain-lookup
+enable secret Netr0n@2026
+service password-encryption
+banner motd # Authorised access only. Unauthorised access is prohibited. #
+line console 0
+ password Con@2026
+ login
+ exec-timeout 10 0
+ logging synchronous
+ exit
+!
+! ---- Link to the campus edge router ----
+interface gigabitEthernet0/0
+ description LINK TO NETRON R1-EDGE
+ ip address 203.0.113.1 255.255.255.252
+ no shutdown
+ exit
+!
+! ---- Simulated internet network ----
+interface gigabitEthernet0/1
+ description SIMULATED INTERNET
+ ip address 198.51.100.1 255.255.255.0
+ no shutdown
+ exit
+!
+! ---- Save ----
+end
+write memory
+!
+! ---- Verification ----
+! show ip interface brief
+! ping 203.0.113.2
+! ping 198.51.100.10
