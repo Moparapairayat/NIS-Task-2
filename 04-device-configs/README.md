@@ -33,15 +33,15 @@ These scripts are the installation itself, so they produce the results shown in 
 
 | Script | Explained in report | Evidence (screenshots) |
 |---|---|---|
-| All eight scripts, basic setup block | Section 3.2.3 Basic Device Configuration | Figure 4 (all links up), Figure 5 (banner and password) |
-| `01`–`04` access switches | Section 3.2.4 VLAN and Trunk Configuration | Figure 6, Figures D9–D15 |
-| `05_CORE-SW1.txt` | Sections 3.2.4 and 3.2.5 | Figures 7, 8 and 11, Figures D6–D8 |
-| `06_FW1.txt` | Section 3.2.5 Routing, NAT and Firewall | Figure 10, Figure D5 |
-| `07_R1-EDGE.txt` | Section 3.2.5 Routing, NAT and Firewall | Figures 9 and 13, Figures D3–D4 |
-| `08_ISP-R.txt` | Section 3.2.5 Routing, NAT and Firewall | Figures D1–D2 |
-| `09_servers_and_printer_IP.md` | Section 3.2.5 (static addressing) | Figure 12, Figures D16–D20 |
+| All eight scripts, basic setup block | Section 17 Basic Device Configuration | Figure 4 (all links up), Figure 5 (banner and password) |
+| `01`–`04` access switches | Section 18 VLAN and Trunk Configuration | Figure 6, Figures D9–D15 |
+| `05_CORE-SW1.txt` | Sections 18 and 19 | Figures 7, 8 and 11, Figures D6–D8 |
+| `06_FW1.txt` | Section 19 Routing, NAT and Firewall | Figure 10, Figure D5 |
+| `07_R1-EDGE.txt` | Section 19 Routing, NAT and Firewall | Figures 9 and 13, Figures D3–D4 |
+| `08_ISP-R.txt` | Section 19 Routing, NAT and Firewall | Figures D1–D2 |
+| `09_servers_and_printer_IP.md` | Section 19 (static addressing) | Figure 12, Figures D16–D20 |
 
-The screenshots themselves are stored in `05-screenshots/task2b-installation/`, and Table 10 in Section 3.2.6 of the report summarises every check.
+The screenshots themselves are stored in `05-screenshots/task2b-installation/`, and Table 10 in Section 20 of the report summarises every check.
 
 ## Running configurations
 
