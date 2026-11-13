@@ -27,6 +27,22 @@ The access switches are configured before the core so that each trunk is ready w
 
 **Note:** the passwords in these scripts are lab passwords used only in the Packet Tracer simulation.
 
+## Link to the Task 2b report
+
+These scripts are the installation itself, so they produce the results shown in every Task 2b figure, not only one. Figure 4 (all 21 links up) is the overall result of running all eight scripts; the table below shows where each script is explained and where its results are evidenced.
+
+| Script | Explained in report | Evidence (screenshots) |
+|---|---|---|
+| All eight scripts, basic setup block | Section 18 Basic Device Configuration | Figure 4 (all links up), Figure 5 (banner and password) |
+| `01`–`04` access switches | Section 19 VLAN and Trunk Configuration | Figure 6, Figures D9–D15 |
+| `05_CORE-SW1.txt` | Sections 19 and 20 | Figures 7, 8 and 11, Figures D6–D8 |
+| `06_FW1.txt` | Section 20 Routing, NAT and Firewall | Figure 10, Figure D5 |
+| `07_R1-EDGE.txt` | Section 20 Routing, NAT and Firewall | Figures 9 and 13, Figures D3–D4 |
+| `08_ISP-R.txt` | Section 20 Routing, NAT and Firewall | Figures D1–D2 |
+| `09_servers_and_printer_IP.md` | Section 20 (static addressing) | Figure 12, Figures D16–D20 |
+
+The screenshots themselves are stored in `05-screenshots/task2b-installation/`, and Table 10 in Section 21 of the report summarises every check.
+
 ## Running configurations
 
 Exported after Task 2c is complete. To export: open the device's **CLI** tab, run `terminal length 0` and then `show running-config`, and copy the output into `running-configs/<DEVICE>.txt`. On FW1, press Space at each `--More--` prompt.
