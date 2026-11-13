@@ -12,7 +12,7 @@
 !
 configure terminal
 !
-! ---- Basic device setup (Section 18) ----
+! ---- Basic device setup (Section 3.2.3) ----
 hostname FW1
 enable password Netr0n@2026
 !

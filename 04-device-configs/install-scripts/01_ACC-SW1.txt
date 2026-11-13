@@ -9,7 +9,7 @@
 !          Lines starting with "!" are comments and are ignored by IOS.
 ! ==================================================================
 !
-! ---- Basic device setup (Section 18) ----
+! ---- Basic device setup (Section 3.2.3) ----
 enable
 configure terminal
 hostname ACC-SW1
