@@ -5,6 +5,7 @@ This folder holds the configuration of every network device in two forms.
 | Folder | Contents |
 |---|---|
 | `install-scripts/` | The commands used to install the network in Task 2b (AC 3.2), one file per device, in the order they were applied |
+| `service-scripts/` | The services and security settings added in Task 2c (AC 3.3): DHCP, DNS, web, FTP, DHCP relay, inter-VLAN ACLs, SSH, port security and DHCP snooping |
 | `running-configs/` | The final running configuration exported from each device with `show running-config` |
 
 ## Install scripts (Task 2b)

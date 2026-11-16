@@ -1,0 +1,44 @@
+! ==================================================================
+! Device : SRV-SW1
+! Model  : Cisco 2960-24TT
+! Task   : Task 2c - Network Services and Applications (AC 3.3)
+! Source : Design document Tables 7 (services) and 8 (access policy)
+! Order  : 6 of 7
+! Use    : Open the device > CLI tab > log in (console Con@2026,
+!          enable Netr0n@2026) > type "enable" > paste from
+!          "configure terminal". The Task 2b script must be applied first.
+! ==================================================================
+!
+configure terminal
+!
+! ---- Server ports: PortFast, BPDU Guard and port security (Section 25) ----
+interface range fastEthernet0/1 - 3
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security mac-address sticky
+ switchport port-security violation shutdown
+ exit
+!
+! ---- Secure remote management: SSH v2 from the Admin VLAN only (Section 25) ----
+ip domain-name college.local
+username admin privilege 15 secret Adm1n@2026
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+access-list 10 remark ADMIN VLAN ONLY FOR MANAGEMENT
+access-list 10 permit 192.168.10.0 0.0.0.255
+line vty 0 15
+ access-class 10 in
+ login local
+ transport input ssh
+ exec-timeout 10 0
+ exit
+!
+! ---- Save ----
+end
+write memory
+!
+! ---- Verification ----
+! show port-security
+! show ip ssh

@@ -1,0 +1,77 @@
+! ==================================================================
+! Device : CORE-SW1
+! Model  : Cisco 3560-24PS
+! Task   : Task 2c - Network Services and Applications (AC 3.3)
+! Source : Design document Tables 7 (services) and 8 (access policy)
+! Order  : 2 of 7
+! Use    : Open the device > CLI tab > log in (console Con@2026,
+!          enable Netr0n@2026) > type "enable" > paste from
+!          "configure terminal". The Task 2b script must be applied first.
+! ==================================================================
+!
+configure terminal
+!
+! ---- DHCP relay for the user VLANs (Section 21) ----
+interface vlan 10
+ ip helper-address 192.168.40.10
+ exit
+interface vlan 20
+ ip helper-address 192.168.40.10
+ exit
+interface vlan 30
+ ip helper-address 192.168.40.10
+ exit
+!
+! ---- Inter-VLAN access control (Section 24, Table 8) ----
+! Faculty: no access to Admin or Management, everything else allowed
+ip access-list extended FACULTY-IN
+ permit udp any any eq bootps
+ permit tcp 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255 established
+ permit icmp 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255 echo-reply
+ deny ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255
+ deny ip 192.168.20.0 0.0.0.255 192.168.99.0 0.0.0.255
+ permit ip 192.168.20.0 0.0.0.255 any
+ exit
+! Lab: DNS, web and FTP only inside the campus, plus the internet
+ip access-list extended LAB-IN
+ permit udp any any eq bootps
+ permit tcp 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255 established
+ permit icmp 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255 echo-reply
+ permit tcp 192.168.30.0 0.0.0.255 192.168.20.0 0.0.0.255 established
+ permit icmp 192.168.30.0 0.0.0.255 192.168.20.0 0.0.0.255 echo-reply
+ permit udp 192.168.30.0 0.0.0.255 host 192.168.40.10 eq domain
+ permit tcp 192.168.30.0 0.0.0.255 host 192.168.40.30 eq www
+ permit tcp 192.168.30.0 0.0.0.255 host 192.168.40.20 eq ftp
+ permit tcp 192.168.30.0 0.0.0.255 host 192.168.40.20 eq 20
+ deny ip 192.168.30.0 0.0.0.255 192.168.0.0 0.0.255.255
+ permit ip 192.168.30.0 0.0.0.255 any
+ exit
+interface vlan 20
+ ip access-group FACULTY-IN in
+ exit
+interface vlan 30
+ ip access-group LAB-IN in
+ exit
+!
+! ---- Secure remote management: SSH v2 from the Admin VLAN only (Section 25) ----
+ip domain-name college.local
+username admin privilege 15 secret Adm1n@2026
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+access-list 10 remark ADMIN VLAN ONLY FOR MANAGEMENT
+access-list 10 permit 192.168.10.0 0.0.0.255
+line vty 0 15
+ access-class 10 in
+ login local
+ transport input ssh
+ exec-timeout 10 0
+ exit
+!
+! ---- Save ----
+end
+write memory
+!
+! ---- Verification ----
+! show access-lists
+! show ip interface vlan 30
+! show ip ssh
