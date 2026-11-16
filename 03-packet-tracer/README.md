@@ -1,7 +1,12 @@
-# Packet Tracer file
+# Packet Tracer files
 
-Place the complete network here:
+All files open in Cisco Packet Tracer 9.0.1 or later.
 
-- `NIS_Task2_Campus.pkt` – built and tested in Cisco Packet Tracer 9.0.1
+| File | Stage | Contents |
+|---|---|---|
+| `3.1-NIS-Figure 2.pkt` | Task 2a – Network design (AC 3.1) | All 22 devices placed, named and cabled (21 links) as in Figure 2 of the report, before any configuration |
+| `NIS_Task2b_Installation.pkt` | Task 2b – Network installation (AC 3.2) | The same network fully installed: VLANs, trunks, SVIs, routing, firewall, NAT and static addressing of the servers and printer, with all 21 links up |
 
-The file contains all 22 devices, 21 links and the full configuration used in Tasks 2(b) and 2(c).
+The commands used to move from the first file to the second are in [`04-device-configs/install-scripts`](../04-device-configs/install-scripts). A further file will be added after Task 2c (network services).
+
+**Device passwords (lab only):** console `Con@2026`, enable `Netr0n@2026`.
