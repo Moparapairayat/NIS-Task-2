@@ -1,0 +1,21 @@
+! ==================================================================
+! Device : FW1
+! Model  : Cisco ASA 5506-X
+! Task   : Task 2c - Network Services and Applications (AC 3.3)
+! Order  : 8 (added during testing, see Section 26)
+! Why    : The first web test from ADMIN-PC1 to www.internet.test timed
+!          out although ping worked. HTTP inspection lets the ASA track
+!          web sessions so that the replies are allowed back in.
+! Use    : Open FW1 > CLI tab > "enable" (password Netr0n@2026) > paste.
+! ==================================================================
+!
+configure terminal
+policy-map global_policy
+ class inspection_default
+  inspect http
+  exit
+write memory
+!
+! ---- Verification ----
+! show running-config policy-map
+! From ADMIN-PC1: Web Browser > http://www.internet.test
