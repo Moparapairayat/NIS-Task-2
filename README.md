@@ -1,54 +1,203 @@
-# Campus Network Design, Installation and Services
+<div align="center">
 
-![Cisco Packet Tracer](https://img.shields.io/badge/Cisco%20Packet%20Tracer-9.0.1-1BA0D7?logo=cisco&logoColor=white)
-![Qualification](https://img.shields.io/badge/OTHM-Level%205%20Extended%20Diploma%20in%20IT-4B2E83)
-![Unit](https://img.shields.io/badge/Unit-Network%20Information%20Systems%20(R%2F617%2F2272)-555)
-![Status](https://img.shields.io/badge/Status-Complete-2EA44F)
+# 🌐 NETRON CAMPUS NETWORK
 
-Supporting repository for **Task 2 (Learning Outcome 3)** of the Network Information Systems unit: the design, installation and service configuration of a secure campus network for the Netron plc graduate training scenario.
+**Secure Campus Network Design, Installation & Services — Network Information Systems, Task 2**
 
-Everything needed to review, reopen or rebuild the network is here: the Packet Tracer files for each stage, the exact commands applied to every device, the draw.io diagrams, and every screenshot used as evidence in the report.
+  <p align="center">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=800&size=20&pause=1400&color=10B981&center=true&vCenter=true&width=920&lines=Cisco+Packet+Tracer+9.0.1+%E2%80%A2+22+Devices+%E2%80%A2+21+Links+%E2%80%A2+8+VLANs;Inter-VLAN+Routing+%E2%80%A2+ASA+Firewall+%E2%80%A2+NAT%2FPAT+%E2%80%A2+Static+Routing;DHCP+Relay+%E2%80%A2+DNS+%E2%80%A2+HTTP+%E2%80%A2+FTP+%E2%80%A2+Network+Printing;ACLs+%E2%80%A2+SSH+v2+%E2%80%A2+Port+Security+%E2%80%A2+DHCP+Snooping" alt="Typing animation" />
+  </p>
 
----
+  <p align="center">
+    <img src="https://img.shields.io/badge/STATUS-COMPLETE-10B981?style=for-the-badge&labelColor=0D1117" alt="STATUS-COMPLETE" />
+    <img src="https://img.shields.io/badge/CISCO_PACKET_TRACER-9.0.1-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white&labelColor=0D1117" alt="CISCO_PACKET_TRACER-9.0.1" />
+    <img src="https://img.shields.io/badge/DEVICES-22-7C3AED?style=for-the-badge&labelColor=0D1117" alt="DEVICES-22" />
+    <img src="https://img.shields.io/badge/TESTS-11%2F11_PASSED-0EA5E9?style=for-the-badge&labelColor=0D1117" alt="TESTS-11%2F11_PASSED" />
+  </p>
 
-## Contents
+  <p align="center">
+    <a href="#assessment-coverage"><img src="https://img.shields.io/badge/Assessment_Coverage-10B981?style=for-the-badge&labelColor=0D1117" alt="Assessment_Coverage" /></a>
+    <a href="#topology"><img src="https://img.shields.io/badge/Topology-0EA5E9?style=for-the-badge&labelColor=0D1117" alt="Topology" /></a>
+    <a href="#services"><img src="https://img.shields.io/badge/Services-7C3AED?style=for-the-badge&labelColor=0D1117" alt="Services" /></a>
+    <a href="#security"><img src="https://img.shields.io/badge/Security-F97316?style=for-the-badge&labelColor=0D1117" alt="Security" /></a>
+    <a href="#verification"><img src="https://img.shields.io/badge/Verification-EF4444?style=for-the-badge&labelColor=0D1117" alt="Verification" /></a>
+    <a href="#getting-started"><img src="https://img.shields.io/badge/Getting_Started-F59E0B?style=for-the-badge&labelColor=0D1117" alt="Getting_Started" /></a>
+  </p>
 
-- [Assessment coverage](#assessment-coverage)
-- [Topology](#topology)
-- [Network at a glance](#network-at-a-glance)
-- [Device inventory](#device-inventory)
-- [IP addressing](#ip-addressing)
-- [Services](#services)
-- [Security controls](#security-controls)
-- [Verification results](#verification-results)
-- [Repository structure](#repository-structure)
-- [How to use this repository](#how-to-use-this-repository)
-- [Lab credentials](#lab-credentials)
-- [Author](#author)
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3987-4801-a50e-c67081e2b58b.gif" width="100%" alt="Divider Animation" />
 
----
-
-## Assessment coverage
-
-| Part | Assessment criterion | Report sections | Packet Tracer file | Commands | Evidence |
-|---|---|---|---|---|---|
-| **a** | AC 3.1 – Produce a comprehensive design of a network to a given scenario | 2–13 | [`3.1-NIS-Figure 2.pkt`](03-packet-tracer/3.1-NIS-Figure%202.pkt) | – | [Diagrams](02-diagrams) · [Figure 2](05-screenshots/task2a-design) |
-| **b** | AC 3.2 – Install a network according to a predefined network specification | 14–19, Appendix D | [`NIS_Task2b_Installation.pkt`](03-packet-tracer/NIS_Task2b_Installation.pkt) | [Install scripts](04-device-configs/install-scripts) | [30 screenshots](05-screenshots/task2b-installation) |
-| **c** | AC 3.3 – Configure network services and applications | 20–26, Appendix E | [`NIS_Task2c_Services.pkt`](03-packet-tracer/NIS_Task2c_Services.pkt) | [Service scripts](04-device-configs/service-scripts) | [22 screenshots](05-screenshots/task2c-services) |
+</div>
 
 ---
 
-## Topology
+<div align="center">
 
-![Figure 1 – Logical topology](02-diagrams/Figure1_Logical_Topology.png)
+<a id="academic-submission"></a>
 
-*Figure 1 – Logical topology. Open the editable versions live in draw.io:*
-[**Figure 1 – Logical topology**](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Moparapairayat/NIS-Task-2/main/02-diagrams/Figure1_Logical_Topology.drawio) ·
-[**Figure 3 – Physical topology and ports**](https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Moparapairayat/NIS-Task-2/main/02-diagrams/Figure3_Physical_Topology.drawio)
+  <h2>🎓 ACADEMIC SUBMISSION & COURSE DOSSIER</h2>
+
+  <p align="center">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=19&pause=1400&color=FCD34D&center=true&vCenter=true&width=850&lines=%E2%9C%A8+Network+Information+Systems+%E2%80%93+Task+2+%E2%9C%A8;Student%3A+Mopara+Pair+Ayat;Instructor%3A+Afsana+Tabassum+Tamishra;Institution%3A+BITHM+College+Of+Professionals;Qualification%3A+OTHM+Level+5+in+IT%2FCSE" alt="Academic Header Typing Banner" />
+  </p>
+
+  <p align="center">
+    <a href="#academic-submission"><img src="https://img.shields.io/badge/STUDENT_NAME-Mopara_Pair_Ayat-0EA5E9?style=for-the-badge&logo=github&logoColor=white&labelColor=0D1117" alt="Student Name" /></a>
+    <a href="#academic-submission"><img src="https://img.shields.io/badge/INSTRUCTOR-Afsana_Tabassum_Tamishra-F59E0B?style=for-the-badge&labelColor=0D1117" alt="Instructor" /></a>
+  </p>
+
+  <p align="center">
+    <a href="#academic-submission"><img src="https://img.shields.io/badge/INSTITUTION-BITHM_College_Of_Professionals-10B981?style=for-the-badge&labelColor=0D1117" alt="Institution" /></a>
+  </p>
+
+  <p align="center">
+    <a href="#academic-submission"><img src="https://img.shields.io/badge/QUALIFICATION-OTHM_Level_5_in_IT%2FCSE-8B5CF6?style=for-the-badge&labelColor=0D1117" alt="Qualification" /></a>
+    <a href="#academic-submission"><img src="https://img.shields.io/badge/UNIT-Network_Information_Systems-EC4899?style=for-the-badge&labelColor=0D1117" alt="Unit" /></a>
+  </p>
+
+  <br>
+
+  <table align="center" width="95%">
+    <thead>
+      <tr>
+        <th align="center" width="35%">🖋️ Specification Field</th>
+        <th align="left" width="65%">📋 Academic Record</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align="center"><b>👤 Student Name</b></td>
+        <td><code>Mopara Pair Ayat</code> &nbsp;&nbsp; 🚀 <i>Network Designer & Implementation Engineer</i></td>
+      </tr>
+      <tr>
+        <td align="center"><b>👩‍🏫 Lab Instructor</b></td>
+        <td><code>Afsana Tabassum Tamishra</code> &nbsp;&nbsp; 🏆 <i>Lecturer · Department of Information Technology</i></td>
+      </tr>
+      <tr>
+        <td align="center"><b>🏛️ Educational Institute</b></td>
+        <td><b>BITHM College Of Professionals</b>, Chattogram &nbsp;&nbsp; 🎓 <i>Affiliated Campus</i></td>
+      </tr>
+      <tr>
+        <td align="center"><b>📘 Qualification Level</b></td>
+        <td><code>OTHM Level 5 in IT/CSE</code> &nbsp;&nbsp; 🇬🇧 <i>UK Regulated Framework</i></td>
+      </tr>
+      <tr>
+        <td align="center"><b>📚 Unit</b></td>
+        <td><code>Network Information Systems (R/617/2272)</code> &nbsp;&nbsp; 🌐 <i>Learning Outcome 3 · Task 2 Lab Demonstration</i></td>
+      </tr>
+      <tr>
+        <td align="center"><b>🏢 Scenario</b></td>
+        <td><code>Netron plc</code> &nbsp;&nbsp; 🧑‍🎓 <i>Graduate network training: plan, design, set up and configure a network system</i></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3987-4801-a50e-c67081e2b58b.gif" width="100%" alt="Divider Animation" />
+
+</div>
 
 ---
 
-## Network at a glance
+## 🛠️ Tools & Technologies
+
+<a id="tools"></a>
+
+### Simulation, Design & Documentation
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Cisco_Packet_Tracer_9.0.1-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white&labelColor=0D1117" alt="Cisco_Packet_Tracer_9.0.1" />
+  <img src="https://img.shields.io/badge/draw.io_Diagrams-F08705?style=for-the-badge&logo=diagramsdotnet&logoColor=white&labelColor=0D1117" alt="draw.io_Diagrams" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white&labelColor=0D1117" alt="GitHub" />
+  <img src="https://img.shields.io/badge/Microsoft_Word-2B579A?style=for-the-badge&labelColor=0D1117" alt="Microsoft_Word" />
+</p>
+
+### Network Platforms
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Cisco_IOS_2911_Router-049FD9?style=for-the-badge&logo=cisco&logoColor=white&labelColor=0D1117" alt="Cisco_IOS_2911_Router" />
+  <img src="https://img.shields.io/badge/Cisco_Catalyst_3560_L3-049FD9?style=for-the-badge&logo=cisco&logoColor=white&labelColor=0D1117" alt="Cisco_Catalyst_3560_L3" />
+  <img src="https://img.shields.io/badge/Cisco_Catalyst_2960-049FD9?style=for-the-badge&logo=cisco&logoColor=white&labelColor=0D1117" alt="Cisco_Catalyst_2960" />
+  <img src="https://img.shields.io/badge/Cisco_ASA_5506--X-EF4444?style=for-the-badge&logo=cisco&logoColor=white&labelColor=0D1117" alt="Cisco_ASA_5506--X" />
+</p>
+
+### Protocols & Network Technologies
+
+<p align="center">
+  <img src="https://img.shields.io/badge/IEEE_802.1Q_VLANs-7C3AED?style=for-the-badge&labelColor=0D1117" alt="IEEE_802.1Q_VLANs" />
+  <img src="https://img.shields.io/badge/Inter--VLAN_Routing-0EA5E9?style=for-the-badge&labelColor=0D1117" alt="Inter--VLAN_Routing" />
+  <img src="https://img.shields.io/badge/Static_Routing-10B981?style=for-the-badge&labelColor=0D1117" alt="Static_Routing" />
+  <img src="https://img.shields.io/badge/NAT%2FPAT-F59E0B?style=for-the-badge&labelColor=0D1117" alt="NAT%2FPAT" />
+  <img src="https://img.shields.io/badge/DHCP_Relay-EC4899?style=for-the-badge&labelColor=0D1117" alt="DHCP_Relay" />
+  <img src="https://img.shields.io/badge/DNS-8B5CF6?style=for-the-badge&labelColor=0D1117" alt="DNS" />
+  <img src="https://img.shields.io/badge/HTTP_%2B_FTP-06B6D4?style=for-the-badge&labelColor=0D1117" alt="HTTP_%2B_FTP" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Extended_ACLs-EF4444?style=for-the-badge&labelColor=0D1117" alt="Extended_ACLs" />
+  <img src="https://img.shields.io/badge/SSH_v2-10B981?style=for-the-badge&labelColor=0D1117" alt="SSH_v2" />
+  <img src="https://img.shields.io/badge/Port_Security-F97316?style=for-the-badge&labelColor=0D1117" alt="Port_Security" />
+  <img src="https://img.shields.io/badge/DHCP_Snooping-7C3AED?style=for-the-badge&labelColor=0D1117" alt="DHCP_Snooping" />
+  <img src="https://img.shields.io/badge/BPDU_Guard-0EA5E9?style=for-the-badge&labelColor=0D1117" alt="BPDU_Guard" />
+  <img src="https://img.shields.io/badge/Stateful_Firewall-EF4444?style=for-the-badge&labelColor=0D1117" alt="Stateful_Firewall" />
+</p>
+
+---
+
+## 📦 Overview
+
+This repository is the complete evidence pack for **Task 2 (Learning Outcome 3)** of the Network Information Systems unit. It documents a secure campus network for the **Netron plc** training scenario through all three stages of the lab demonstration: the **design**, the **installation** in Cisco Packet Tracer, and the **configuration of network services and applications**.
+
+Everything needed to review, reopen or rebuild the network is here: one Packet Tracer file for each stage, the exact commands applied to every device, editable draw.io diagrams, and all **53 screenshots** used as evidence in the report.
+
+---
+
+## 🎯 Assessment Coverage
+
+<a id="assessment-coverage"></a>
+
+| Part | Assessment Criterion | Report | Packet Tracer | Commands | Evidence |
+| :--: | :-- | :--: | :-- | :-- | :-- |
+| **a** | **AC 3.1** – Produce a comprehensive design of a network to a given scenario | Sections 2–13 | [`3.1-NIS-Figure 2.pkt`](03-packet-tracer/3.1-NIS-Figure%202.pkt) | – | [Diagrams](02-diagrams) · [Figure 2](05-screenshots/task2a-design) |
+| **b** | **AC 3.2** – Install a network according to a predefined network specification | Sections 14–19 · Appendix D | [`NIS_Task2b_Installation.pkt`](03-packet-tracer/NIS_Task2b_Installation.pkt) | [Install scripts](04-device-configs/install-scripts) | [30 screenshots](05-screenshots/task2b-installation) |
+| **c** | **AC 3.3** – Configure network services and applications | Sections 20–26 · Appendix E | [`NIS_Task2c_Services.pkt`](03-packet-tracer/NIS_Task2c_Services.pkt) | [Service scripts](04-device-configs/service-scripts) | [22 screenshots](05-screenshots/task2c-services) |
+
+---
+
+## 🏗️ Topology
+
+<a id="topology"></a>
+
+<p align="center">
+  <img src="02-diagrams/Figure1_Logical_Topology.png" alt="Figure 1 – Logical topology" width="100%" />
+  <br>
+  <sub><b>Figure 1</b> – Logical topology: VLANs, subnets, gateways and security zones</sub>
+</p>
+
+<p align="center">
+  <a href="https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Moparapairayat/NIS-Task-2/main/02-diagrams/Figure1_Logical_Topology.drawio"><img src="https://img.shields.io/badge/OPEN_LIVE-Figure_1_Logical-F08705?style=for-the-badge&logo=diagramsdotnet&logoColor=white&labelColor=0D1117" alt="Open Figure 1 live" /></a>
+  <a href="https://app.diagrams.net/#Uhttps://raw.githubusercontent.com/Moparapairayat/NIS-Task-2/main/02-diagrams/Figure3_Physical_Topology.drawio"><img src="https://img.shields.io/badge/OPEN_LIVE-Figure_3_Physical-F08705?style=for-the-badge&logo=diagramsdotnet&logoColor=white&labelColor=0D1117" alt="Open Figure 3 live" /></a>
+</p>
+
+```
+                    INTERNET-SRV (198.51.100.10)
+                             │
+                          ISP-R
+                             │  203.0.113.0/30
+                         R1-EDGE  ── PAT to 203.0.113.2
+                             │  10.0.0.0/30
+                    FW1 (ASA 5506-X)  outside 0 │ inside 100
+                             │  10.0.0.4/30
+                   CORE-SW1 (L3 · SVIs · ACLs · DHCP relay) ── PRN1 (VLAN 50)
+        ┌──────────────┬─────┴────────┬──────────────┐
+     ACC-SW1        ACC-SW2        ACC-SW3        SRV-SW1
+    VLAN 10 Admin  VLAN 20 Faculty VLAN 30 Lab    VLAN 40 Servers
+    3 PCs          2 PCs           4 PCs          DHCP-DNS · FILE · WEB
+```
+
+---
+
+## 🌐 Network at a Glance
+
+<a id="network-at-a-glance"></a>
 
 | Area | Design decision |
 |---|---|
@@ -63,7 +212,9 @@ Everything needed to review, reopen or rebuild the network is here: the Packet T
 
 ---
 
-## Device inventory
+## 🖥️ Device Inventory
+
+<a id="device-inventory"></a>
 
 | Device | Model | Role | Management / key address |
 |---|---|---|---|
@@ -84,7 +235,9 @@ Everything needed to review, reopen or rebuild the network is here: the Packet T
 
 ---
 
-## IP addressing
+## 🧮 IP Addressing & Routing
+
+<a id="ip-addressing"></a>
 
 ### VLANs and subnets
 
@@ -112,7 +265,9 @@ The public ranges 203.0.113.0/24 and 198.51.100.0/24 are reserved for documentat
 
 ---
 
-## Services
+## ⚙️ Network Services & Access Policy
+
+<a id="services"></a>
 
 | Service | Server | Configuration |
 |---|---|---|
@@ -135,7 +290,9 @@ Enforced by the named ACLs `FACULTY-IN` and `LAB-IN`, applied inbound on the VLA
 
 ---
 
-## Security controls
+## 🔒 Security Controls
+
+<a id="security"></a>
 
 | Layer | Control | Where |
 |---|---|---|
@@ -149,7 +306,9 @@ Enforced by the named ACLs `FACULTY-IN` and `LAB-IN`, applied inbound on the VLA
 
 ---
 
-## Verification results
+## 🧪 Verification Results
+
+<a id="verification"></a>
 
 All tests from the verification plan (Table 9 of the report) passed.
 
@@ -171,7 +330,9 @@ The full evidence index, including Appendix D and Appendix E, is in [`05-screens
 
 ---
 
-## Repository structure
+## 🗂️ Repository Structure
+
+<a id="structure"></a>
 
 ```
 NIS-Task-2/
@@ -191,19 +352,50 @@ NIS-Task-2/
 
 ---
 
-## How to use this repository
+## 🚀 Getting Started
 
-**Review the finished network.** Open [`NIS_Task2c_Services.pkt`](03-packet-tracer/NIS_Task2c_Services.pkt) in Cisco Packet Tracer 9.0.1 or later (free with a Cisco Networking Academy account). Every device is fully configured; use the credentials below to log in.
+<a id="getting-started"></a>
 
-**Rebuild it step by step.** Start from [`3.1-NIS-Figure 2.pkt`](03-packet-tracer/3.1-NIS-Figure%202.pkt), then apply the files in [`install-scripts`](04-device-configs/install-scripts) and [`service-scripts`](04-device-configs/service-scripts) in their numbered order. Each file states the device, the order, how to paste it and the commands that verify it.
+### Prerequisites
 
-**Edit the diagrams.** Use the live draw.io links above, or open the `.drawio` files at [app.diagrams.net](https://app.diagrams.net) with *File › Open from › Device*.
+- **Cisco Packet Tracer** `9.0.1` or later (free with a Cisco Networking Academy account)
+- A web browser for the live draw.io diagrams
+
+### Review the finished network
+
+1. **Clone or download the repository**:
+
+   ```bash
+   git clone https://github.com/Moparapairayat/NIS-Task-2.git
+   ```
+
+2. Open [`03-packet-tracer/NIS_Task2c_Services.pkt`](03-packet-tracer/NIS_Task2c_Services.pkt) in Packet Tracer. Every device is fully configured.
+
+3. Run the quick checks:
+
+| Check | Device | Command / Action | Expected Result |
+| :-- | :-- | :-- | :-- |
+| DHCP | Any PC › Command Prompt | `ipconfig /all` | Address from the VLAN pool, DHCP server `192.168.40.10` |
+| DNS & routing | ADMIN-PC1 › Command Prompt | `ping www.college.local` | Replies from `192.168.40.30` |
+| Internal web | Any PC › Web Browser | `http://www.college.local` | Netron College Intranet |
+| Internet & NAT | ADMIN-PC1 › Web Browser | `http://www.internet.test` | External Test Website |
+| Access control | LAB-PC1 › Command Prompt | `ping 192.168.10.10` | Destination host unreachable |
+| Secure management | ADMIN-PC1 › Command Prompt | `ssh -l admin 192.168.99.1` | `CORE-SW1#` prompt |
+| Firewall | R1-EDGE › CLI | `ping 192.168.40.30` | Success rate 0 percent |
+
+> 💡 The first ping or page load after opening the file may time out while devices learn each other's addresses. Repeat it once.
+
+### Rebuild it step by step
+
+Start from [`3.1-NIS-Figure 2.pkt`](03-packet-tracer/3.1-NIS-Figure%202.pkt), then apply the files in [`install-scripts`](04-device-configs/install-scripts) and [`service-scripts`](04-device-configs/service-scripts) in their numbered order. Each script names its device, its position in the sequence, how to paste it and the commands that verify it.
 
 ---
 
-## Lab credentials
+## 🔑 Lab Access Credentials
 
-These passwords exist only inside the Packet Tracer simulation and are shared so that the network can be reviewed.
+<a id="credentials"></a>
+
+> ⚠️ These credentials exist **only inside the Packet Tracer simulation** and are shared so that the network can be reviewed. They are not used on any real system.
 
 | Purpose | Credential |
 |---|---|
@@ -214,9 +406,26 @@ These passwords exist only inside the Packet Tracer simulation and are shared so
 
 ---
 
-## Author
+## 📖 Documentation
 
-**Mopara Pair Ayat**
-BITHM College of Professionals, Chattogram
-OTHM Level 5 Extended Diploma in Information Technology · Network Information Systems (R/617/2272)
-Lab instructor: Afsana Tabassum Tamishra · November 2026
+| Document | Description |
+| :-- | :-- |
+| [Report](01-design-document) | Structure of the Task 2 report (Parts a–c, appendices) and the final PDF |
+| [Diagrams](02-diagrams) | Figure 1 and Figure 3 with live draw.io links |
+| [Packet Tracer Files](03-packet-tracer) | One `.pkt` per stage, quick checks and credentials |
+| [Device Configurations](04-device-configs) | Every command, mapped to report sections and figures |
+| [Evidence Index](05-screenshots) | All 53 screenshots by figure number and test |
+
+---
+
+## 📄 License
+
+This project is submitted as academic coursework for **OTHM Level 5 in IT/CSE** at **BITHM College Of Professionals**. All rights reserved by the author unless otherwise licensed.
+
+<div align="center">
+
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3987-4801-a50e-c67081e2b58b.gif" width="100%" alt="Divider Animation" />
+
+<sub>Designed, installed and verified by Mopara Pair Ayat · November 2026</sub>
+
+</div>
